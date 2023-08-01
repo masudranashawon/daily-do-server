@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+const userRoutes = require("./routes/user.route");
 const todoRoutes = require("./routes/todo.route");
 
 /* VARIABLES */
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 });
 
 /* BYPASS API */
+app.use("/api/users", userRoutes);
 app.use("/api/todos", todoRoutes);
 
 /* DATABASE */
