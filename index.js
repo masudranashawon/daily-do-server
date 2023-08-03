@@ -21,6 +21,10 @@ app.use(
     credentials: true,
   })
 );
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
+});
 
 /* TEST API */
 app.get("/", (req, res) => {

@@ -5,9 +5,12 @@ const {
   deleteTodo,
   updateTodo,
 } = require("../controllers/todo.controller");
+const { isAuthenticated } = require("../middlewares/auth.middleware");
 
 //Router
 const router = express.Router();
+
+router.use(isAuthenticated);
 
 //GET all todos
 router.get("/", getAllTodos);
@@ -19,6 +22,6 @@ router.post("/", createTodo);
 router.delete("/:id", deleteTodo);
 
 //UPDATE a todo
-router.put("/:id", updateTodo);
+router.patch("/:id", updateTodo);
 
 module.exports = router;
